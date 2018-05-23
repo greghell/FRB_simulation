@@ -1,9 +1,8 @@
 clear all;
 f_start = 100;  % start frequency
-f_stop = 1000;   % stop frequency
+f_stop = 1000;  % stop frequency
 DM = 500;      % dispersion measure
 SNR = 20;       % SNR in dB
-% nTotSam = 2^14; % total number of samples
 nFiltSize = 2^10;   % size of FRB filter
 alpha = 1;    % FRB curvature index
 frbwidth = 100;    % frb instantaneous frequency bandwidth index
@@ -44,9 +43,11 @@ signal_rec = signal_rec(1,:) + 1i*signal_rec(2,:);
 % plot spestrograms before / after quantization
 figure;
 subplot(1,3,1);
-myspectro(signal,128,300,600);
+myspectro(signal,128,f_start,f_stop);
+title('initial signal');
 subplot(1,3,2);
-myspectro(signal_rec,128,300,600)
+myspectro(signal_rec,128,f_start,f_stop);
+title('quantized signal');
 
 % write quantized FRB to binary file
 fileID = fopen('frb.bin','w');
@@ -62,4 +63,5 @@ signal_rec_bin = reshape(double(signalBIN),2,length(signalBIN)/2);
 signal_rec_bin = signal_rec_bin(1,:) + 1i*signal_rec_bin(2,:);
 
 subplot(1,3,3);
-myspectro(signal_rec_bin,128,300,600)
+myspectro(signal_rec_bin,128,f_start,f_stop);
+title('reconstructed signal');

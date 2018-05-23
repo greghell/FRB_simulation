@@ -10,6 +10,8 @@ function myspectro(sig,nResol,f_start,f_stop)
     xlabel('time [s]');
     ylabel('frequency [MHz]');
     title('spectrogram [dB]');
+    colorbar;
+    title(colorbar,'Spectrogram [dB]');
     
 end
 
