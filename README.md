@@ -13,3 +13,6 @@ Home-made spectrogram function, taking as parameters:
 [2] frequency resolution in # of frequency bins  
 [3] start frequency  
 [4] stop frequency  
+
+## FRB_generator.py
+python version of FRB generator, does not include quantization
